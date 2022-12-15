@@ -1,8 +1,8 @@
+import Picture from './Picture';
 import sprite from '../assets/sprite.svg';
+import { Movie } from '../types';
 
-// PICTURE COMPONENT
-
-const Card = ({ movie }) => {
+const Card = ({ movie, inSwiper }: { movie: Movie; inSwiper?: boolean }) => {
   const thumbnailUrl = {
     small: `.${movie.thumbnail.regular.small}`,
     medium: `.${movie.thumbnail.regular.medium}`,
@@ -16,20 +16,17 @@ const Card = ({ movie }) => {
   };
 
   return (
-    <div className="flex flex-col gap-1">
+    <div
+      className={`flex flex-col gap-1 relative rounded-lg overflow-hidden ${
+        inSwiper ? 'max-w-max' : ''
+      }`}
+    >
       <div
         className={`relative ${
-          movie.isTrending ? 'w-trending-sm md:w-trending-lg' : ''
+          inSwiper ? 'w-trending-sm md:w-trending-lg' : ''
         }`}
       >
-        {/* PICTURE TAG HERE */}
-        <img
-          className="w-full object-cover rounded-lg"
-          width="255"
-          height="174"
-          src={imgUrl.small}
-          alt="Movie preview"
-        />
+        <Picture url={imgUrl} inSwiper={inSwiper} />
         <div className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50">
           <svg className="text-white" width="12" height="14">
             <use
@@ -42,12 +39,10 @@ const Card = ({ movie }) => {
       </div>
       <div
         className={`${
-          movie.isTrending
-            ? 'absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10'
-            : ''
+          inSwiper ? 'absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10' : ''
         }`}
       >
-        {movie.isTrending ? (
+        {inSwiper ? (
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-75 -z-10"></div>
         ) : null}
         <div className="flex items-center text-sm text-white text-opacity-75">
@@ -65,7 +60,7 @@ const Card = ({ movie }) => {
         </div>
         <div
           className={`text-white font-medium ${
-            movie.isTrending ? 'text-base md:text-2xl' : ''
+            inSwiper ? 'text-base md:text-2xl' : ''
           }`}
         >
           {movie.title}

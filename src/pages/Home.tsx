@@ -2,17 +2,16 @@ import { useState } from 'react';
 
 import Trending from '../components/Trending';
 import Content from '../components/Content';
+import { Movie } from '../types';
 
-const Home = (props: any) => {
-  const { movies } = props;
-
-  const trends = movies.filter((item: any) => item.isTrending);
-  const regulars = movies.filter((item: any) => !item.isTrending);
+const Home = ({ movies }: { movies: Movie[] }): JSX.Element => {
+  const trends = movies.filter((item) => item.isTrending);
+  const regularList = movies.filter((item) => !item.isTrending);
 
   return (
     <>
       <Trending trends={trends} />
-      <Content movies={regulars} />
+      <Content movies={regularList} title={'Recommended for you'} />
     </>
   );
 };

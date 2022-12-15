@@ -1,6 +1,13 @@
+import { useState, useEffect } from 'react';
 import sprite from '../assets/sprite.svg';
 
-const Search = () => {
+const Search = ({ onChange }: { onChange: (name: string) => void }) => {
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    onChange(text);
+  }, [text]);
+
   return (
     <div className="flex w-full relative text-white p-6 pl-12 text-base md:text-2xl">
       <label className="w-full">
@@ -8,6 +15,8 @@ const Search = () => {
           className="w-full bg-transparent outline-none"
           type="text"
           placeholder="Search for movies or TV series"
+          onChange={(e) => setText(e.target.value)}
+          value={text}
         />
       </label>
       <svg
