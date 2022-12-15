@@ -9,6 +9,10 @@ module.exports = {
         darkBlue: '#10141E',
         greyishBlue: '#5A698F',
       },
+      width: {
+        'trending-sm': '15rem',
+        'trending-lg': '30rem',
+      },
     },
   },
   plugins: [],

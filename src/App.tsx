@@ -1,17 +1,18 @@
+import 'swiper/css';
 import './App.css';
 import Nav from './components/Nav';
 import Search from './components/Search';
-import Card from './components/Card';
+import Trending from './components/Trending';
+import Content from './components/Content';
 
 const App = () => {
   return (
-    <div className="App bg-darkBlue md:p-6 lg:flex">
+    <div className="App font-light bg-darkBlue md:p-6 lg:flex">
       <Nav />
-      <div className="w-full">
+      <div className="w-full lg:pl-20 overflow-hidden">
         <Search />
-        <div className="px-4 py-12 grid grid-cols-2 gap-4">
-          <Card />
-        </div>
+        <Trending />
+        <Content />
       </div>
     </div>
   );

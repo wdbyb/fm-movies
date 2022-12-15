@@ -3,7 +3,7 @@ import logo from '../assets/logo.svg';
 
 const Nav = () => {
   return (
-    <div className="flex items-center justify-between p-6 bg-semiDarkBlue md:rounded-xl lg:flex-col lg:justify-start">
+    <div className="flex items-center justify-between p-6 bg-semiDarkBlue md:rounded-xl lg:flex-col lg:justify-start lg:absolute lg:top-4 lg:bottom-4 lg:left-4">
       <div className="shrink-0 lg:mb-12">
         <img width="25" height="20" src={logo} alt="" />
       </div>
