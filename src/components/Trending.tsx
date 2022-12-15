@@ -1,24 +1,19 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import CardTrending from './CardTrending';
+import Card from './Card';
 
-const Trending = () => {
+const Trending = ({ trends }) => {
   return (
     <div className="p-4">
       <h2 className="mb-6 text-xl text-white md:text-3xl">Trending</h2>
       <div>
         <Swiper spaceBetween={16} slidesPerView={'auto'}>
-          <SwiperSlide className="max-w-max">
-            <CardTrending />
-          </SwiperSlide>
-          <SwiperSlide className="max-w-max">
-            <CardTrending />
-          </SwiperSlide>
-          <SwiperSlide className="max-w-max">
-            <CardTrending />
-          </SwiperSlide>
-          <SwiperSlide className="max-w-max">
-            <CardTrending />
-          </SwiperSlide>
+          {trends.map((movie: any, i: number) => {
+            return (
+              <SwiperSlide className="max-w-max" key={i}>
+                <Card movie={movie} />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </div>
