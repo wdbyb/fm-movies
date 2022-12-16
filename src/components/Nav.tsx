@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
 import sprite from '../assets/sprite.svg';
-import logo from '../assets/logo.svg';
+import avatar from '../assets/image-avatar.png';
 
-const Nav = ({ pathname }: { pathname: string }) => {
+interface NavProps {
+  pathname: string;
+}
+
+const Nav = ({ pathname }: NavProps) => {
   return (
     <div className="flex items-center justify-between p-6 bg-semiDarkBlue md:rounded-xl lg:flex-col lg:justify-start lg:absolute lg:top-4 lg:bottom-4 lg:left-4">
-      <div className="shrink-0 lg:mb-12">
-        <img width="25" height="20" src={logo} alt="" />
+      <div className="shrink-0 lg:mb-12 text-red">
+        <svg width="25" height="20">
+          <use xlinkHref={`${sprite}#logo`} />
+        </svg>
       </div>
       <div className="flex gap-6 text-greyishBlue lg:flex-col lg:mb-auto">
         <Link
@@ -48,7 +54,9 @@ const Nav = ({ pathname }: { pathname: string }) => {
           </svg>
         </Link>
       </div>
-      <div className="w-6 h-6 rounded-full bg-white shrink-0"></div>
+      <div className="w-6 h-6 rounded-full shrink-0">
+        <img width="24" height="24" src={avatar} alt="Avatar" />
+      </div>
     </div>
   );
 };

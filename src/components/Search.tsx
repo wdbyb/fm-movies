@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import sprite from '../assets/sprite.svg';
 
-const Search = ({ onChange }: { onChange: (name: string) => void }) => {
+interface SearchProps {
+  onChange: (name: string) => void;
+}
+
+const Search = ({ onChange }: SearchProps) => {
   const [text, setText] = useState('');
 
   useEffect(() => {

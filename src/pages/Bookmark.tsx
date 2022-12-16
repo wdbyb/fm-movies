@@ -1,7 +1,11 @@
 import Content from '../components/Content';
 import { Movie } from '../types';
 
-const Bookmark = ({ movies }: { movies: Movie[] }) => {
+interface BookmarkProps {
+  movies: Movie[];
+}
+
+const Bookmark = ({ movies }: BookmarkProps) => {
   const bookmarkedMovies = movies.filter(
     (item: any) => item.isBookmarked && item.category === 'Movie'
   );

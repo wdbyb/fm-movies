@@ -16,7 +16,7 @@ import Content from './components/Content';
 import { Movie } from './types';
 
 const App = () => {
-  const [movies, setMovies] = useState(data);
+  const movies: Movie[] = data;
   const [searchedMovies, setSearchedMovies] = useState<Movie[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const { pathname } = useLocation();

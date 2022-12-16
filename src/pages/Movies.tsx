@@ -1,7 +1,11 @@
 import Content from '../components/Content';
 import { Movie } from '../types';
 
-const Movies = ({ movies }: { movies: Movie[] }) => {
+interface MoviesProps {
+  movies: Movie[];
+}
+
+const Movies = ({ movies }: MoviesProps) => {
   const moviesList = movies.filter(
     (item: any) => item.category === 'Movie' && !item.isTrending
   );

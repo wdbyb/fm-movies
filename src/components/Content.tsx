@@ -1,13 +1,12 @@
 import Card from './Card';
 import { Movie } from '../types';
 
-const Content = ({
-  movies,
-  title,
-}: {
-  movies: Movie[] | [];
+interface ContentProps {
+  movies: Movie[];
   title: string;
-}) => {
+}
+
+const Content = ({ movies, title }: ContentProps) => {
   return (
     <div className="p-4">
       <h2 className="mb-6 text-xl text-white md:text-3xl">{title}</h2>

@@ -2,7 +2,12 @@ import Picture from './Picture';
 import sprite from '../assets/sprite.svg';
 import { Movie } from '../types';
 
-const Card = ({ movie, inSwiper }: { movie: Movie; inSwiper?: boolean }) => {
+interface CardProps {
+  movie: Movie;
+  inSwiper?: boolean;
+}
+
+const Card = ({ movie, inSwiper }: CardProps) => {
   const thumbnailUrl = {
     small: `.${movie.thumbnail.regular.small}`,
     medium: `.${movie.thumbnail.regular.medium}`,
@@ -17,7 +22,7 @@ const Card = ({ movie, inSwiper }: { movie: Movie; inSwiper?: boolean }) => {
 
   return (
     <div
-      className={`flex flex-col gap-1 relative rounded-lg overflow-hidden ${
+      className={`group flex flex-col gap-1 relative rounded-lg overflow-hidden cursor-pointer ${
         inSwiper ? 'max-w-max' : ''
       }`}
     >
@@ -27,6 +32,14 @@ const Card = ({ movie, inSwiper }: { movie: Movie; inSwiper?: boolean }) => {
         }`}
       >
         <Picture url={imgUrl} inSwiper={inSwiper} />
+        <div className="hidden items-center justify-center bg-black bg-opacity-50 absolute inset-0 group-hover:flex z-20 md:z-auto">
+          <div className="flex items-center w-28 h-12 p-2 bg-white bg-opacity-25 rounded-full text-white text-lg">
+            <svg className="mr-4" width="30" height="30">
+              <use xlinkHref={`${sprite}#icon-play`} />
+            </svg>
+            <span>Play</span>
+          </div>
+        </div>
         <div className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50">
           <svg className="text-white" width="12" height="14">
             <use

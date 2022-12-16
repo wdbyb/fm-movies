@@ -1,6 +1,11 @@
 import { Url } from '../types';
 
-const Picture = ({ url, inSwiper }: { url: Url; inSwiper?: boolean }) => {
+interface PictureProps {
+  url: Url;
+  inSwiper?: boolean;
+}
+
+const Picture = ({ url, inSwiper }: PictureProps) => {
   let sizes = {
     width: 255,
     height: 174,

@@ -1,15 +1,8 @@
 export interface Movie {
   title: string;
   thumbnail: {
-    trending?: {
-      small: string;
-      large: string;
-    };
-    regular: {
-      small: string;
-      medium: string;
-      large: string;
-    };
+    trending?: Url;
+    regular: Url;
   };
   year: number;
   category: string;
