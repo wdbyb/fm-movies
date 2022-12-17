@@ -20,6 +20,7 @@ const Nav = ({ pathname }: NavProps) => {
           className={`transition duration-300 hover:text-red ${
             pathname === '/' ? 'text-white' : ''
           }`}
+          aria-label="Navigate to Home"
         >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-nav-home`} />
@@ -30,6 +31,7 @@ const Nav = ({ pathname }: NavProps) => {
           className={`transition duration-300 hover:text-red ${
             pathname === '/movies' ? 'text-white' : ''
           }`}
+          aria-label="Navigate to Movies"
         >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-nav-movies`} />
@@ -40,6 +42,7 @@ const Nav = ({ pathname }: NavProps) => {
           className={`transition duration-300 hover:text-red ${
             pathname === '/series' ? 'text-white' : ''
           }`}
+          aria-label="Navigate to TV series"
         >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-nav-tv-series`} />
@@ -50,6 +53,7 @@ const Nav = ({ pathname }: NavProps) => {
           className={`transition duration-300 hover:text-red ${
             pathname === '/bookmark' ? 'text-white' : ''
           }`}
+          aria-label="Navigate to Bookmarks"
         >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-nav-bookmark`} />

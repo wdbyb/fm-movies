@@ -45,6 +45,7 @@ const Card = ({ movie, inSwiper, onClick }: CardProps) => {
           onClick={() => onClick(movie.id)}
           className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50 text-white hover:bg-white hover:text-black transition duration-300"
           type="button"
+          aria-label="Bookmark"
         >
           <svg width="12" height="14">
             <use
