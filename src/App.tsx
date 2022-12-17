@@ -32,7 +32,7 @@ const App = () => {
   };
 
   const handleBookmarkClick = (id: number): void => {
-    const foo = movies.map((item) => {
+    const newList = movies.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -42,7 +42,7 @@ const App = () => {
       return item;
     });
 
-    setMovies(foo);
+    setMovies(newList);
   };
 
   useEffect(() => {
