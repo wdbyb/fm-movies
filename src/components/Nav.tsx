@@ -17,7 +17,9 @@ const Nav = ({ pathname }: NavProps) => {
       <div className="flex gap-6 text-greyishBlue lg:flex-col lg:mb-auto">
         <Link
           to="/"
-          className={`hover:text-red ${pathname === '/' ? 'text-white' : ''}`}
+          className={`transition duration-300 hover:text-red ${
+            pathname === '/' ? 'text-white' : ''
+          }`}
         >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-nav-home`} />
@@ -25,7 +27,7 @@ const Nav = ({ pathname }: NavProps) => {
         </Link>
         <Link
           to="movies"
-          className={`hover:text-red ${
+          className={`transition duration-300 hover:text-red ${
             pathname === '/movies' ? 'text-white' : ''
           }`}
         >
@@ -35,7 +37,7 @@ const Nav = ({ pathname }: NavProps) => {
         </Link>
         <Link
           to="series"
-          className={`hover:text-red ${
+          className={`transition duration-300 hover:text-red ${
             pathname === '/series' ? 'text-white' : ''
           }`}
         >
@@ -45,7 +47,7 @@ const Nav = ({ pathname }: NavProps) => {
         </Link>
         <Link
           to="bookmark"
-          className={`hover:text-red ${
+          className={`transition duration-300 hover:text-red ${
             pathname === '/bookmark' ? 'text-white' : ''
           }`}
         >

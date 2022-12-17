@@ -33,7 +33,7 @@ const Card = ({ movie, inSwiper, onClick }: CardProps) => {
         }`}
       >
         <Picture url={imgUrl} inSwiper={inSwiper} />
-        <div className="hidden items-center justify-center bg-black bg-opacity-50 absolute inset-0 group-hover:flex">
+        <div className="flex items-center justify-center bg-black bg-opacity-50 transition duration-300 absolute inset-0 opacity-0 group-hover:opacity-100">
           <div className="flex items-center md:w-28 h-12 p-2 bg-white bg-opacity-25 rounded-full text-white text-lg">
             <svg className="md:mr-4" width="30" height="30">
               <use xlinkHref={`${sprite}#icon-play`} />
@@ -43,10 +43,10 @@ const Card = ({ movie, inSwiper, onClick }: CardProps) => {
         </div>
         <button
           onClick={() => onClick(movie.id)}
-          className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50"
+          className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50 text-white hover:bg-white hover:text-black transition duration-300"
           type="button"
         >
-          <svg className="text-white" width="12" height="14">
+          <svg width="12" height="14">
             <use
               xlinkHref={`${sprite}#icon-bookmark-${
                 movie.isBookmarked ? 'full' : 'empty'
