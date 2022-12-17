@@ -46,12 +46,16 @@ const App = () => {
   };
 
   useEffect(() => {
+    setSearchQuery('');
+  }, [pathname]);
+
+  useEffect(() => {
     const searched = movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchQuery)
     );
 
     setSearchedMovies(searched);
-  }, [searchQuery]);
+  }, [searchQuery, movies]);
 
   return (
     <div className="App font-light bg-darkBlue md:p-6 lg:flex">

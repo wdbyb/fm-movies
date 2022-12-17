@@ -23,13 +23,15 @@ const Search = ({ onChange }: SearchProps) => {
           value={text}
         />
       </label>
-      <svg
+      <button
+        onClick={() => onChange(text)}
         className="w-6 h-6 md:w-8 md:h-8 absolute top-1/2 -translate-y-1/2 left-4 md:left-2"
-        width="24"
-        height="24"
+        type="button"
       >
-        <use xlinkHref={`${sprite}#icon-search`} />
-      </svg>
+        <svg width="24" height="24">
+          <use xlinkHref={`${sprite}#icon-search`} />
+        </svg>
+      </button>
     </div>
   );
 };
