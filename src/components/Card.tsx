@@ -5,9 +5,10 @@ import { Movie } from '../types';
 interface CardProps {
   movie: Movie;
   inSwiper?: boolean;
+  onClick: (id: number) => void;
 }
 
-const Card = ({ movie, inSwiper }: CardProps) => {
+const Card = ({ movie, inSwiper, onClick }: CardProps) => {
   const thumbnailUrl = {
     small: `.${movie.thumbnail.regular.small}`,
     medium: `.${movie.thumbnail.regular.medium}`,
@@ -32,15 +33,19 @@ const Card = ({ movie, inSwiper }: CardProps) => {
         }`}
       >
         <Picture url={imgUrl} inSwiper={inSwiper} />
-        <div className="hidden items-center justify-center bg-black bg-opacity-50 absolute inset-0 group-hover:flex z-20 md:z-auto">
-          <div className="flex items-center w-28 h-12 p-2 bg-white bg-opacity-25 rounded-full text-white text-lg">
-            <svg className="mr-4" width="30" height="30">
+        <div className="hidden items-center justify-center bg-black bg-opacity-50 absolute inset-0 group-hover:flex">
+          <div className="flex items-center md:w-28 h-12 p-2 bg-white bg-opacity-25 rounded-full text-white text-lg">
+            <svg className="md:mr-4" width="30" height="30">
               <use xlinkHref={`${sprite}#icon-play`} />
             </svg>
-            <span>Play</span>
+            <span className="hidden md:block">Play</span>
           </div>
         </div>
-        <div className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50">
+        <button
+          onClick={() => onClick(movie.id)}
+          className="absolute right-4 top-4 p-3 bg-darkBlue rounded-full bg-opacity-50"
+          type="button"
+        >
           <svg className="text-white" width="12" height="14">
             <use
               xlinkHref={`${sprite}#icon-bookmark-${
@@ -48,7 +53,7 @@ const Card = ({ movie, inSwiper }: CardProps) => {
               }`}
             />
           </svg>
-        </div>
+        </button>
       </div>
       <div
         className={`${

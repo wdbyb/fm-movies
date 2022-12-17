@@ -3,14 +3,21 @@ import { Movie } from '../types';
 
 interface MoviesProps {
   movies: Movie[];
+  onBookmarkClick: (id: number) => void;
 }
 
-const Movies = ({ movies }: MoviesProps) => {
+const Movies = ({ movies, onBookmarkClick }: MoviesProps) => {
   const moviesList = movies.filter(
     (item: any) => item.category === 'Movie' && !item.isTrending
   );
 
-  return <Content movies={moviesList} title={'Movies'} />;
+  return (
+    <Content
+      movies={moviesList}
+      onBookmarkClick={onBookmarkClick}
+      title={'Movies'}
+    />
+  );
 };
 
 export default Movies;

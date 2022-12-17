@@ -3,9 +3,10 @@ import { Movie } from '../types';
 
 interface BookmarkProps {
   movies: Movie[];
+  onBookmarkClick: (id: number) => void;
 }
 
-const Bookmark = ({ movies }: BookmarkProps) => {
+const Bookmark = ({ movies, onBookmarkClick }: BookmarkProps) => {
   const bookmarkedMovies = movies.filter(
     (item: any) => item.isBookmarked && item.category === 'Movie'
   );
@@ -15,8 +16,16 @@ const Bookmark = ({ movies }: BookmarkProps) => {
 
   return (
     <>
-      <Content movies={bookmarkedMovies} title={'Bookmarked Movies'} />
-      <Content movies={bookmarkedTvSeries} title={'Bookmarked TV Series'} />
+      <Content
+        movies={bookmarkedMovies}
+        onBookmarkClick={onBookmarkClick}
+        title={'Bookmarked Movies'}
+      />
+      <Content
+        movies={bookmarkedTvSeries}
+        onBookmarkClick={onBookmarkClick}
+        title={'Bookmarked TV Series'}
+      />
     </>
   );
 };

@@ -15,14 +15,34 @@ import Content from './components/Content';
 
 import { Movie } from './types';
 
+const getMovies = () => {
+  const movies = data.map((item, index) => ({ ...item, id: index }));
+
+  return movies;
+};
+
 const App = () => {
-  const movies: Movie[] = data;
+  const [movies, setMovies] = useState<Movie[]>(getMovies());
   const [searchedMovies, setSearchedMovies] = useState<Movie[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const { pathname } = useLocation();
 
   const handleSearchChange = (name: string): void => {
     setSearchQuery(name);
+  };
+
+  const handleBookmarkClick = (id: number): void => {
+    const foo = movies.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          isBookmarked: !item.isBookmarked,
+        };
+      }
+      return item;
+    });
+
+    setMovies(foo);
   };
 
   useEffect(() => {
@@ -41,14 +61,38 @@ const App = () => {
         {searchQuery !== '' ? (
           <Content
             movies={searchedMovies}
+            onBookmarkClick={handleBookmarkClick}
             title={`Found ${searchedMovies.length} results for ${searchQuery}`}
           />
         ) : (
           <Routes>
-            <Route path="/" element={<Home movies={movies} />} />
-            <Route path="/movies" element={<Movies movies={movies} />} />
-            <Route path="/series" element={<Series movies={movies} />} />
-            <Route path="/bookmark" element={<Bookmark movies={movies} />} />
+            <Route
+              path="/"
+              element={
+                <Home movies={movies} onBookmarkClick={handleBookmarkClick} />
+              }
+            />
+            <Route
+              path="/movies"
+              element={
+                <Movies movies={movies} onBookmarkClick={handleBookmarkClick} />
+              }
+            />
+            <Route
+              path="/series"
+              element={
+                <Series movies={movies} onBookmarkClick={handleBookmarkClick} />
+              }
+            />
+            <Route
+              path="/bookmark"
+              element={
+                <Bookmark
+                  movies={movies}
+                  onBookmarkClick={handleBookmarkClick}
+                />
+              }
+            />
             <Route
               path="*"
               element={

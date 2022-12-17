@@ -4,9 +4,10 @@ import { Movie } from '../types';
 
 interface TrendingProps {
   trends: Movie[];
+  onBookmarkClick: (id: number) => void;
 }
 
-const Trending = ({ trends }: TrendingProps) => {
+const Trending = ({ trends, onBookmarkClick }: TrendingProps) => {
   return (
     <div className="p-4">
       <h2 className="mb-6 text-xl text-white md:text-3xl">Trending</h2>
@@ -15,7 +16,7 @@ const Trending = ({ trends }: TrendingProps) => {
           {trends.map((movie: any, i: number) => {
             return (
               <SwiperSlide className="max-w-max" key={i}>
-                <Card movie={movie} inSwiper={true} />
+                <Card movie={movie} onClick={onBookmarkClick} inSwiper={true} />
               </SwiperSlide>
             );
           })}
